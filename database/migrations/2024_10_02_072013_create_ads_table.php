@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('email')->unique()->nullable()->index();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('url')->nullable();
+            $table->string('external_price')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('ads');
     }
 };
