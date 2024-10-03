@@ -4,12 +4,11 @@ namespace App\Models;
 
 use App\Http\Traits\HasUuidTrait;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TmpCode extends Model
 {
-    use HasFactory, HasUuidTrait;
+    use HasUuidTrait;
 
     protected $guarded = ['id'];
 

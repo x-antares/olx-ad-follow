@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Traits\HasUuidTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class AdSubscription extends Model
 {
-    use HasFactory;
+    use HasUuidTrait;
+
+    protected $guarded = ['id'];
 }

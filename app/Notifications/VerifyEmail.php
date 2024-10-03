@@ -4,10 +4,11 @@ namespace App\Notifications;
 
 use App\Models\TmpCode;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyEmail extends Notification
+class VerifyEmail extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -27,6 +28,6 @@ class VerifyEmail extends Notification
         return (new MailMessage)
             ->subject('Verify email')
             ->line('Verify your email using this code: ' . $tmpCode)
-            ->line('Code will be active for ' . config('auth.code_timeout', 60). 'seconds');
+            ->line('Code will be active for ' . config('auth.code_timeout', 60). ' seconds');
     }
 }

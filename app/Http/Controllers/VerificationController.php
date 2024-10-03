@@ -12,7 +12,7 @@ class VerificationController extends Controller
     public function sendCode(Request $request)
     {
         $request->validate([
-           'email' => 'string',
+           'email' => 'string|required|email:strict',
         ]);
 
         /** @var User $user */
@@ -25,20 +25,28 @@ class VerificationController extends Controller
         $user->notify(new \App\Notifications\VerifyEmail());
     }
 
-    public function verify(Request $request)
+    public function verifyEmail(Request $request)
     {
         $request->validate([
-           'code' => 'string',
-           'email' => 'email',
+            'code' => 'string|required',
+            'email' => 'string|required|email:strict',
         ]);
 
         /** @var User $user */
         $user = User::where('email', $request->email)->first();
 
+        if (!$user) {
+            throw ValidationException::withMessages(['email' => 'Invalid email address.']);
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            throw ValidationException::withMessages(['email' => 'This email already verified.']);
+        }
+
         /** @var TmpCode $tmpCode */
         $tmpCode = $user->tmpCodes()->byCreatedAt()->where('code', $request->code)->first();
 
-        if (is_null($tmpCode)) {
+        if (!$tmpCode) {
             throw ValidationException::withMessages(['code' => 'Verification code is incorrect.']);
         }
 

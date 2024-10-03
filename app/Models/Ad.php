@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
+use App\Actions\SendNotificationAdPriceChanged;
 use App\Http\Traits\HasUuidTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ad extends Model
 {
-    use HasFactory, HasUuidTrait;
+    use HasUuidTrait;
 
     protected $guarded = ['id'];
+
+    protected static function booted(): void
+    {
+        self::updated(static function (self $ad): void {
+            if ($ad->isDirty('external_price')) {
+                SendNotificationAdPriceChanged::run($ad);
+            }
+        });
+    }
 
     /**
      * @return HasMany
