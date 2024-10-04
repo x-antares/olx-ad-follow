@@ -54,6 +54,8 @@ services:
         environment:
             PMA_ARBITRARY: 1
         restart: always
+        networks:
+            - laravel
         ports:
             - "8081:80"
     mailhog:

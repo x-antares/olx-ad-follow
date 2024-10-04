@@ -12,11 +12,11 @@ class VerificationController extends Controller
     public function sendCode(Request $request)
     {
         $request->validate([
-           'email' => 'string|required|email:strict',
+           'email' => 'string|required|email:strict|unique:users',
         ]);
 
         /** @var User $user */
-        $user = User::firstOrCreate(['email' => $request->email]);
+        $user = User::create(['email' => $request->email]);
 
         if ($user->hasVerifiedEmail()) {
             throw ValidationException::withMessages(['email' => 'This email already verified.']);
@@ -28,7 +28,7 @@ class VerificationController extends Controller
     public function verifyEmail(Request $request)
     {
         $request->validate([
-            'code' => 'string|required',
+            'code' => 'integer|required',
             'email' => 'string|required|email:strict',
         ]);
 

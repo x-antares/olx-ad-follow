@@ -11,8 +11,11 @@ final class CreateAdSubscription
 {
     use AsAction;
 
-    public function handle(User $user, string $adPath)
+    public function handle(User $user, string $urlWithDomain)
     {
+        $adPath = strtok($urlWithDomain, '?');
+        $adPath = str_replace(['https://www.olx.ua/d/uk/obyavlenie/', '.html'], '', $adPath);
+
         $ad = Ad::where('url', $adPath)->first();
 
         if (is_null($ad)) {
