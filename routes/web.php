@@ -16,7 +16,6 @@ use App\Http\Controllers\SubscriptionController;
 */
 
 Route::get('/', function () {
-dd('this');
     return view('welcome');
 });
 
