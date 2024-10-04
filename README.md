@@ -1,3 +1,6 @@
+## How it work
+![image](https://github.com/user-attachments/assets/89ceb036-764d-4106-8332-d08b8b6ed24e)
+
 ## About OLX Ad Follow
 
 OLX Ad Follow is a Laravel-based application designed to help users track and manage their ads on OLX.
