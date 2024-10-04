@@ -1,5 +1,6 @@
 ## How it work
-![image](https://github.com/user-attachments/assets/89ceb036-764d-4106-8332-d08b8b6ed24e)
+![image](https://github.com/user-attachments/assets/7487ad1e-8106-4bbb-8a4a-40f74685da20)
+
 
 ## About OLX Ad Follow
 
