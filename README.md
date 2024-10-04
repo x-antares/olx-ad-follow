@@ -1,3 +1,11 @@
+## For development of this project used dependencies:
+
+Ensure you have installed **Docker** and **Docker Compose**
+
+- **Docker**: Version 24.0.7 Ensure you have Docker and Docker Compose installed
+- **Docker Compose**: Version 1.29.2
+- **Linux**
+
 ## How it work
 ![image](https://github.com/user-attachments/assets/7487ad1e-8106-4bbb-8a4a-40f74685da20)
 
@@ -55,3 +63,7 @@ This command allows you to execute commands inside a Docker container with the p
 10. **Seed the Database**
    ```bash
     docker-compose exec -u $(id -u):$(id -g) php php artisan db:seed
+
+11. **Run tests**
+   ```bash
+    docker-compose exec -u $(id -u):$(id -g) php php artisan test
