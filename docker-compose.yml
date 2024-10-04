@@ -11,7 +11,7 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - ./.mysql/database:/var/lib/mysql
+            - ./.docker/database:/var/lib/mysql
         networks:
             - laravel
     nginx:
