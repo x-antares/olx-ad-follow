@@ -31,4 +31,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'olx' => [
+        'headers' => [
+            'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
+            'Accept' => '*/*',
+            'Connection' => 'keep-alive',
+            'Accept-Encoding' => 'gzip, deflate, br',
+        ]
+    ],
+
 ];
