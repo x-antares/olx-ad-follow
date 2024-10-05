@@ -63,6 +63,15 @@ This command allows you to execute commands inside a Docker container with the p
 10. **Seed the Database**
    ```bash
     docker-compose exec -u $(id -u):$(id -g) php php artisan db:seed
+ ```
+11. **Run the Queue**
+   ```bash
+    docker-compose exec -u $(id -u):$(id -g) php php artisan queue:work
+ ```
+12. **Run the Schedule**
+   ```bash
+    docker-compose exec -u $(id -u):$(id -g) php php artisan schedule:work
+
    ```
 ## To Run tests
    ```bash
